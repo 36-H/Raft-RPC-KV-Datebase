@@ -1,5 +1,7 @@
 package cn.hiles.provider.common.server.base;
 
+import cn.hiles.codec.RpcDecoder;
+import cn.hiles.codec.RpcEncoder;
 import cn.hiles.provider.common.handler.RpcProviderHandler;
 import cn.hiles.provider.common.server.api.Server;
 import io.netty.bootstrap.ServerBootstrap;
@@ -10,8 +12,6 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,9 +63,8 @@ public class BaseServer implements Server {
                         @Override
                         public void initChannel(SocketChannel channel) throws Exception {
                             channel.pipeline()
-                                    // TODO 预留位置，自定义编解码器
-                                    .addLast(new StringDecoder())
-                                    .addLast(new StringEncoder())
+                                    .addLast(new RpcDecoder())
+                                    .addLast(new RpcEncoder())
                                     .addLast(new RpcProviderHandler(handlerMap));
                         }
                     })
