@@ -13,6 +13,7 @@
         <module name="rpc-serialization" />
         <module name="rpc-constants" />
         <module name="rpc-provider-common" />
+        <module name="rpc-codec" />
         <module name="SkipList" />
         <module name="rpc-test" />
         <module name="rpc-annotation" />

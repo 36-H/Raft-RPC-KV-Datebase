@@ -3,6 +3,8 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/RPC/rpc-annotation/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RPC/rpc-annotation/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RPC/rpc-codec/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RPC/rpc-codec/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RPC/rpc-common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RPC/rpc-common/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RPC/rpc-constants/src/main/java" charset="UTF-8" />
