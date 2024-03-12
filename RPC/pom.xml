@@ -19,6 +19,8 @@
         <module>rpc-protocol</module>
         <module>rpc-serialization</module>
         <module>rpc-codec</module>
+        <module>rpc-test/rpc-test-consumer</module>
+        <module>rpc-test/rpc-test-consumer/rpc-test-consumer-codec</module>
     </modules>
 
     <properties>
@@ -44,8 +46,14 @@
         <kryo.version>5.2.0</kryo.version>
         <fst.version>2.57</fst.version>
         <spring.boot.version>2.2.6.RELEASE</spring.boot.version>
+        <fastjson.version>1.2.73</fastjson.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
         <!--        <dependency>-->
         <!--            <groupId>org.slf4j</groupId>-->
         <!--            <artifactId>slf4j-log4j12</artifactId>-->

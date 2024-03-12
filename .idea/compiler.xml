@@ -6,19 +6,24 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="rpc-provider-native" />
         <module name="rpc-protocol" />
         <module name="rpc-common" />
-        <module name="rpc-test-provider" />
         <module name="rpc-serialization" />
-        <module name="rpc-constants" />
+        <module name="rpc-test-consumer-codec" />
         <module name="rpc-provider-common" />
-        <module name="rpc-codec" />
         <module name="SkipList" />
+        <module name="rpc-provider-native" />
+        <module name="rpc-test-provider" />
+        <module name="rpc-constants" />
+        <module name="rpc-codec" />
         <module name="rpc-test" />
         <module name="rpc-annotation" />
+        <module name="rpc-test-consumer" />
         <module name="rpc-test-scanner" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="bhrpc-test-consumer" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
