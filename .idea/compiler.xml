@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="rpc-provider-native" />
+        <module name="rpc-protocol" />
+        <module name="rpc-common" />
+        <module name="rpc-test-provider" />
+        <module name="rpc-constants" />
+        <module name="rpc-provider-common" />
+        <module name="SkipList" />
+        <module name="rpc-test" />
+        <module name="rpc-annotation" />
+        <module name="rpc-test-scanner" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
