@@ -18,6 +18,9 @@ public class RpcProtocol<T> implements Serializable {
         this.body = body;
     }
 
+    public RpcProtocol() {
+    }
+
     public RpcHeader getRpcHeader() {
         return rpcHeader;
     }

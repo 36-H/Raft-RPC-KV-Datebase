@@ -24,6 +24,15 @@ public enum RpcType {
         this.type = type;
     }
 
+    public static RpcType findByCode(byte msgType) {
+        for (RpcType value : RpcType.values()) {
+            if (value.type == msgType) {
+                return value;
+            }
+        }
+        return null;
+    }
+
     public int getType() {
         return type;
     }
