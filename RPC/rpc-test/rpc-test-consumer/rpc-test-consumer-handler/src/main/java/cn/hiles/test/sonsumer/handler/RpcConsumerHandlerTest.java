@@ -1,6 +1,8 @@
 package cn.hiles.test.sonsumer.handler;
 
 import cn.hiles.consumer.common.RpcConsumer;
+import cn.hiles.consumer.common.context.RpcContext;
+import cn.hiles.consumer.common.future.RpcFuture;
 import cn.hiles.protocol.RpcProtocol;
 import cn.hiles.protocol.head.RpcHeaderFactory;
 import cn.hiles.protocol.request.RpcRequest;
@@ -15,7 +17,10 @@ public class RpcConsumerHandlerTest {
     private final static Logger logger = LoggerFactory.getLogger(RpcConsumerHandlerTest.class);
     public static void main(String[] args) throws Exception {
         RpcConsumer rpcConsumer = RpcConsumer.getInstance();
-        logger.info("receive response:{}", rpcConsumer.sendRequest(getRpcRequestProtocol()));
+        rpcConsumer.sendRequest(getRpcRequestProtocol());
+        RpcFuture rpcFuture = RpcContext.getContext().getRpcFuture();
+//        logger.info("receive response:{}", rpcConsumer.sendRequest(getRpcRequestProtocol()).get());
+        logger.info("receive response:{}", rpcFuture.get());
         Thread.sleep(2000);
         rpcConsumer.close();
     }
@@ -30,7 +35,8 @@ public class RpcConsumerHandlerTest {
         rpcRequest.setParameters(new Object[]{"Helios"});
         rpcRequest.setParameterTypes(new Class[]{String.class});
         rpcRequest.setVersion("1.0.0");
-        rpcRequest.setAsync(false);
+//        rpcRequest.setAsync(false);
+        rpcRequest.setAsync(true);
         rpcRequest.setOneWay(false);
         rpcProtocol.setBody(rpcRequest);
         return rpcProtocol;
