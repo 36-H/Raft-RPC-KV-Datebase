@@ -37,8 +37,12 @@ public class BaseServer implements Server {
      * 实体类关系
      */
     protected Map<String, Object> handlerMap = new HashMap<>();
+    /**
+     * 服务提供者的服务调用方式
+     */
+    protected String reflectType;
 
-    public BaseServer(String serverAddress) {
+    public BaseServer(String serverAddress, String reflectType) {
         if (!StringUtils.isEmpty(serverAddress)) {
             String[] addressArray = serverAddress.split(":");
             if (addressArray.length != 2) {
@@ -47,6 +51,7 @@ public class BaseServer implements Server {
             host = addressArray[0];
             port = Integer.parseInt(addressArray[1]);
         }
+        this.reflectType = reflectType;
     }
 
     @Override
@@ -61,11 +66,11 @@ public class BaseServer implements Server {
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
-                        public void initChannel(SocketChannel channel) throws Exception {
+                        public void initChannel(SocketChannel channel) {
                             channel.pipeline()
                                     .addLast(new RpcDecoder())
                                     .addLast(new RpcEncoder())
-                                    .addLast(new RpcProviderHandler(handlerMap));
+                                    .addLast(new RpcProviderHandler(reflectType, handlerMap));
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)

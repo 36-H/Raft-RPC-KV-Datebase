@@ -12,6 +12,8 @@ public class RpcSingleServerTest {
     public void testStartNettyServer() {
         RpcSingleServer rpcSingleServer = new RpcSingleServer(
                 "127.0.0.1:27880",
+//                "jdk",
+                "cglib",
                 "cn.hiles.test"
         );
         rpcSingleServer.startNettyServer();
