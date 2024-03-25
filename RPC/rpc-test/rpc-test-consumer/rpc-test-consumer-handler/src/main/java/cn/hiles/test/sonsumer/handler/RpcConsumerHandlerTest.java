@@ -4,15 +4,18 @@ import cn.hiles.consumer.common.RpcConsumer;
 import cn.hiles.protocol.RpcProtocol;
 import cn.hiles.protocol.head.RpcHeaderFactory;
 import cn.hiles.protocol.request.RpcRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Helios
  * Time：2024-03-25 15:38
  */
 public class RpcConsumerHandlerTest {
+    private final static Logger logger = LoggerFactory.getLogger(RpcConsumerHandlerTest.class);
     public static void main(String[] args) throws Exception {
         RpcConsumer rpcConsumer = RpcConsumer.getInstance();
-        rpcConsumer.sendRequest(getRpcRequestProtocol());
+        logger.info("receive response:{}", rpcConsumer.sendRequest(getRpcRequestProtocol()));
         Thread.sleep(2000);
         rpcConsumer.close();
     }
