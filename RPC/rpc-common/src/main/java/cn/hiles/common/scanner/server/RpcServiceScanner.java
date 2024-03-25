@@ -1,6 +1,7 @@
 package cn.hiles.common.scanner.server;
 
 import cn.hiles.annotation.RpcService;
+import cn.hiles.common.helper.RpcServiceHelper;
 import cn.hiles.common.scanner.ClassScanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +31,7 @@ public class RpcServiceScanner extends ClassScanner {
                     logger.info("scan rpc service class: {}", className);
                     logger.info("@RpcService(interfaceClass = {}, version = {}, group = {})", rpcService.interfaceClass(), rpcService.version(), rpcService.group());
                     String serviceName = getServiceName(rpcService);
-                    String key = serviceName.concat(rpcService.version()).concat(rpcService.group());
+                    String key = RpcServiceHelper.buildServiceKey(serviceName, rpcService.version(), rpcService.group());
                     handlerMap.put(key, clazz.newInstance());
                 }
             } catch (Exception e) {
