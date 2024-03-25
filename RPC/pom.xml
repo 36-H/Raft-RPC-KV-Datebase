@@ -21,6 +21,8 @@
         <module>rpc-codec</module>
         <module>rpc-test/rpc-test-consumer</module>
         <module>rpc-test/rpc-test-consumer/rpc-test-consumer-codec</module>
+        <module>rpc-consumer</module>
+        <module>rpc-consumer/rpc-consumer-common</module>
     </modules>
 
     <properties>
