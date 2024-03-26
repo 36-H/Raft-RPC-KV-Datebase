@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="rpc-test-consumer-native" />
         <module name="rpc-protocol" />
         <module name="rpc-common" />
         <module name="rpc-test-consumer-handler" />
@@ -19,6 +20,7 @@
         <module name="rpc-provider-native" />
         <module name="rpc-test-provider" />
         <module name="rpc-consumer-common" />
+        <module name="rpc-consumer-native" />
         <module name="rpc-constants" />
         <module name="rpc-codec" />
         <module name="rpc-test" />
