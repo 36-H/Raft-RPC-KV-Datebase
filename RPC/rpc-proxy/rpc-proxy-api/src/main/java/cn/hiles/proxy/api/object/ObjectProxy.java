@@ -142,6 +142,8 @@ public class ObjectProxy<T> implements InvocationHandler, IAsyncObjectProxy {
         RpcFuture rpcFuture = null;
         try {
             rpcFuture = consumer.sendRequest(requestRpcProtocol);
+            //如果是消费者是异步调用服务端的服务，这里返回的是null
+            //所以外部服务获取结果需要通过RpcContext.getContext().getRpcFuture().get()获取
         } catch (Exception e) {
             logger.error("call error", e);
         }

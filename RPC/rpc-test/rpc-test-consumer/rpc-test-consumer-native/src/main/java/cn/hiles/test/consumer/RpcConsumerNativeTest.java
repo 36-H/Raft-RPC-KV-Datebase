@@ -21,6 +21,9 @@ public class RpcConsumerNativeTest {
         //远端服务
         DemoService helloService = rpcClient.create(DemoService.class);
         String result = helloService.hello("Helios");
+//        当消费端采用异步调用时，需要从RpcContext中获取RpcFuture对象，然后调用get()方法获取结果
+//        RpcFuture future = RpcContext.getContext().getRpcFuture();
+//        logger.info("async result: {}", future.get());
         logger.info("result: {}", result);
         rpcClient.shutdown();
     }
