@@ -1,11 +1,12 @@
 package cn.hiles.consumer.common;
 
 import cn.hiles.common.threadpool.ClientThreadPool;
-import cn.hiles.consumer.common.future.RpcFuture;
 import cn.hiles.consumer.common.handler.RpcConsumerHandler;
 import cn.hiles.consumer.common.initializer.RpcConsumerInitializer;
 import cn.hiles.protocol.RpcProtocol;
 import cn.hiles.protocol.request.RpcRequest;
+import cn.hiles.proxy.api.consumer.Consumer;
+import cn.hiles.proxy.api.future.RpcFuture;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
@@ -23,7 +24,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author Helios
  * Time：2024-03-25 15:06
  */
-public class RpcConsumer {
+public class RpcConsumer implements Consumer {
     private static volatile RpcConsumer rpcConsumer;
     private static Map<String, RpcConsumerHandler> handlerMap = new ConcurrentHashMap<>();
     private final Logger logger = LoggerFactory.getLogger(RpcConsumer.class);

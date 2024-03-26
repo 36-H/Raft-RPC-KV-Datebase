@@ -23,6 +23,9 @@
         <module>rpc-test/rpc-test-consumer/rpc-test-consumer-codec</module>
         <module>rpc-consumer</module>
         <module>rpc-consumer/rpc-consumer-common</module>
+        <module>rpc-proxy</module>
+        <module>rpc-proxy/rpc-proxy-api</module>
+        <module>rpc-proxy/rpc-proxy-jdk</module>
     </modules>
 
     <properties>

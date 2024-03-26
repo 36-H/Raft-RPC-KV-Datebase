@@ -1,6 +1,6 @@
 package cn.hiles.consumer.common.context;
 
-import cn.hiles.consumer.common.future.RpcFuture;
+import cn.hiles.proxy.api.future.RpcFuture;
 
 /**
  * @author Helios

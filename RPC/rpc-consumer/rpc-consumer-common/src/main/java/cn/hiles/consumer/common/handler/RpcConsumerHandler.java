@@ -1,11 +1,11 @@
 package cn.hiles.consumer.common.handler;
 
 import cn.hiles.consumer.common.context.RpcContext;
-import cn.hiles.consumer.common.future.RpcFuture;
 import cn.hiles.protocol.RpcProtocol;
 import cn.hiles.protocol.head.RpcHeader;
 import cn.hiles.protocol.request.RpcRequest;
 import cn.hiles.protocol.response.RpcResponse;
+import cn.hiles.proxy.api.future.RpcFuture;
 import com.alibaba.fastjson.JSONObject;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;

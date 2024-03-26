@@ -1,4 +1,4 @@
-package cn.hiles.consumer.common.callback;
+package cn.hiles.proxy.api.callback;
 
 /**
  * @author Helios

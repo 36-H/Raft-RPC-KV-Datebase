@@ -1,12 +1,12 @@
 package cn.hiles.test.sonsumer.handler;
 
 import cn.hiles.consumer.common.RpcConsumer;
-import cn.hiles.consumer.common.callback.AsyncRpcCallBack;
 import cn.hiles.consumer.common.context.RpcContext;
-import cn.hiles.consumer.common.future.RpcFuture;
 import cn.hiles.protocol.RpcProtocol;
 import cn.hiles.protocol.head.RpcHeaderFactory;
 import cn.hiles.protocol.request.RpcRequest;
+import cn.hiles.proxy.api.callback.AsyncRpcCallBack;
+import cn.hiles.proxy.api.future.RpcFuture;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

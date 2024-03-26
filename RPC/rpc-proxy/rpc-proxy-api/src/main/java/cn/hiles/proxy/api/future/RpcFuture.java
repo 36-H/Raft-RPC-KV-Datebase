@@ -1,11 +1,11 @@
-package cn.hiles.consumer.common.future;
+package cn.hiles.proxy.api.future;
 
 
 import cn.hiles.common.threadpool.ClientThreadPool;
-import cn.hiles.consumer.common.callback.AsyncRpcCallBack;
 import cn.hiles.protocol.RpcProtocol;
 import cn.hiles.protocol.request.RpcRequest;
 import cn.hiles.protocol.response.RpcResponse;
+import cn.hiles.proxy.api.callback.AsyncRpcCallBack;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

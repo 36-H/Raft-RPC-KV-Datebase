@@ -12,7 +12,10 @@
         <module name="rpc-serialization" />
         <module name="rpc-test-consumer-codec" />
         <module name="rpc-provider-common" />
+        <module name="rpc-proxy" />
+        <module name="rpc-proxy-api" />
         <module name="SkipList" />
+        <module name="rpc-proxy-jdk" />
         <module name="rpc-provider-native" />
         <module name="rpc-test-provider" />
         <module name="rpc-consumer-common" />
