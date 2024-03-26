@@ -1,6 +1,8 @@
 package cn.hiles.consumer;
 
 import cn.hiles.consumer.common.RpcConsumer;
+import cn.hiles.proxy.api.async.IAsyncObjectProxy;
+import cn.hiles.proxy.api.object.ObjectProxy;
 import cn.hiles.proxy.jdk.JdkProxyFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,8 +58,28 @@ public class RpcClient {
      * @return 代理对象
      */
     public <T> T create(Class<T> interfaceClass) {
-        JdkProxyFactory<T> jdkProxyFactory = new JdkProxyFactory<T>(serviceVersion, serviceGroup, serializationType, timeout, RpcConsumer.getInstance(), async, oneway);
+        JdkProxyFactory<T> jdkProxyFactory = new JdkProxyFactory<T>(
+                serviceVersion,
+                serviceGroup,
+                serializationType,
+                timeout, RpcConsumer.getInstance(),
+                async,
+                oneway
+        );
         return jdkProxyFactory.getProxy(interfaceClass);
+    }
+
+    public <T> IAsyncObjectProxy createAsync(Class<T> interfaceClass) {
+        return new ObjectProxy<T>(
+                interfaceClass,
+                serviceVersion,
+                serviceGroup,
+                timeout,
+                RpcConsumer.getInstance(),
+                serializationType,
+                async,
+                oneway
+        );
     }
 
     /**
