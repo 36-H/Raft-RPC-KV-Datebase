@@ -1,6 +1,7 @@
 package cn.hiles.test.sonsumer.handler;
 
 import cn.hiles.consumer.common.RpcConsumer;
+import cn.hiles.consumer.common.callback.AsyncRpcCallBack;
 import cn.hiles.consumer.common.context.RpcContext;
 import cn.hiles.consumer.common.future.RpcFuture;
 import cn.hiles.protocol.RpcProtocol;
@@ -19,6 +20,17 @@ public class RpcConsumerHandlerTest {
         RpcConsumer rpcConsumer = RpcConsumer.getInstance();
         rpcConsumer.sendRequest(getRpcRequestProtocol());
         RpcFuture rpcFuture = RpcContext.getContext().getRpcFuture();
+        rpcFuture.addCallBack(new AsyncRpcCallBack() {
+            @Override
+            public void onSuccess(Object result) {
+                logger.info("run callback success, args:{}", result);
+            }
+
+            @Override
+            public void onException(Throwable throwable) {
+                logger.info("run callback error, args:{}", throwable.getMessage());
+            }
+        });
 //        logger.info("receive response:{}", rpcConsumer.sendRequest(getRpcRequestProtocol()).get());
         logger.info("receive response:{}", rpcFuture.get());
         Thread.sleep(2000);

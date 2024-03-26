@@ -1,15 +1,20 @@
 package cn.hiles.consumer.common.future;
 
 
+import cn.hiles.common.threadpool.ClientThreadPool;
+import cn.hiles.consumer.common.callback.AsyncRpcCallBack;
 import cn.hiles.protocol.RpcProtocol;
 import cn.hiles.protocol.request.RpcRequest;
 import cn.hiles.protocol.response.RpcResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author Helios
@@ -37,6 +42,18 @@ public class RpcFuture extends CompletableFuture<Object> {
      * 默认超时时间
      */
     private long responseTimeThreshold = 5000;
+
+    /**
+     * 回调
+     * 存放异步回调函数
+     */
+    private List<AsyncRpcCallBack> pendingCallBacks = new ArrayList<>();
+
+    /**
+     * 回调锁
+     * 用于控制回调函数的并发
+     */
+    private ReentrantLock lock = new ReentrantLock();
 
     public RpcFuture(RpcProtocol<RpcRequest> requestRpcProtocol) {
         this.sync = new Sync();
@@ -105,11 +122,62 @@ public class RpcFuture extends CompletableFuture<Object> {
     public void done(RpcProtocol<RpcResponse> responseRpcProtocol) {
         this.responseRpcProtocol = responseRpcProtocol;
         sync.release(1);
+        //执行回调函数
+        invokeCallBacks();
         long responseTime = System.currentTimeMillis() - startTime;
         if (responseTime > responseTimeThreshold) {
             logger.warn("The response time is too slow. Request id: "
                     + responseRpcProtocol.getRpcHeader().getRequestId()
                     + ". Response Time: " + responseTime + "ms");
+        }
+    }
+
+    /**
+     * 执行回调函数
+     *
+     * @param callBack 回调函数
+     */
+    public void runCallBack(final AsyncRpcCallBack callBack) {
+        final RpcResponse response = this.responseRpcProtocol.getBody();
+        ClientThreadPool.submit(() -> {
+            if (!response.isError()) {
+                callBack.onSuccess(response.getResult());
+            } else {
+                callBack.onException(new RuntimeException("Response error from server: " + response.getError(), new Throwable(response.getError())));
+            }
+        });
+    }
+
+    /**
+     * 添加回调函数
+     *
+     * @param callBack 回调函数
+     */
+    public RpcFuture addCallBack(AsyncRpcCallBack callBack) {
+        lock.lock();
+        try {
+            if (isDone()) {
+                runCallBack(callBack);
+            } else {
+                this.pendingCallBacks.add(callBack);
+            }
+        } finally {
+            lock.unlock();
+        }
+        return this;
+    }
+
+    /**
+     * 依次执行pendingCallBacks集合中的回调函数
+     */
+    private void invokeCallBacks() {
+        lock.lock();
+        try {
+            for (final AsyncRpcCallBack callBack : pendingCallBacks) {
+                runCallBack(callBack);
+            }
+        } finally {
+            lock.unlock();
         }
     }
 

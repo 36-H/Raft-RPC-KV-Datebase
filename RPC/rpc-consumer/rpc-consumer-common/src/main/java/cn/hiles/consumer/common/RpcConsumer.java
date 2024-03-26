@@ -1,5 +1,6 @@
 package cn.hiles.consumer.common;
 
+import cn.hiles.common.threadpool.ClientThreadPool;
 import cn.hiles.consumer.common.future.RpcFuture;
 import cn.hiles.consumer.common.handler.RpcConsumerHandler;
 import cn.hiles.consumer.common.initializer.RpcConsumerInitializer;
@@ -48,7 +49,10 @@ public class RpcConsumer {
     }
 
     public void close() {
+        //关闭netty线程组
         eventLoopGroup.shutdownGracefully();
+        //关闭消费者线程池
+        ClientThreadPool.shutdown();
     }
 
     public RpcFuture sendRequest(RpcProtocol<RpcRequest> protocol) throws Exception {
