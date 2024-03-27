@@ -27,6 +27,7 @@
         <module>rpc-proxy/rpc-proxy-api</module>
         <module>rpc-proxy/rpc-proxy-jdk</module>
         <module>rpc-consumer/rpc-consumer-native</module>
+        <module>rpc-registry</module>
     </modules>
 
     <properties>

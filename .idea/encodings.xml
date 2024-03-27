@@ -29,6 +29,12 @@
     <file url="file://$PROJECT_DIR$/RPC/rpc-proxy/rpc-proxy-jdk/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RPC/rpc-proxy/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RPC/rpc-proxy/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RPC/rpc-registry/rpc-registry-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RPC/rpc-registry/rpc-registry-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RPC/rpc-registry/rpc-registry-zookeeper/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RPC/rpc-registry/rpc-registry-zookeeper/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RPC/rpc-registry/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RPC/rpc-registry/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RPC/rpc-serialization/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RPC/rpc-serialization/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RPC/rpc-test/bhrpc-test-consumer/src/main/java" charset="UTF-8" />
@@ -45,6 +51,8 @@
     <file url="file://$PROJECT_DIR$/RPC/rpc-test/rpc-test-consumer/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RPC/rpc-test/rpc-test-provider/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RPC/rpc-test/rpc-test-provider/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RPC/rpc-test/rpc-test-registry/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RPC/rpc-test/rpc-test-registry/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RPC/rpc-test/rpc-test-scanner/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RPC/rpc-test/rpc-test-scanner/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RPC/rpc-test/src/main/java" charset="UTF-8" />
